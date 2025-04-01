@@ -1,66 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ImpulsaLATAM: Donaciones
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/img/logo.png" alt="Logo ImpulsaLATAM" width="300">
 </p>
 
-## About Laravel
+## Concepto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ImpulsaLATAM es una organización que desarrolla soluciones tecnológicas innovadoras para enfrentar desafíos sociales en América Latina. Uno de sus proyectos principales, "ImpulsaLATAM: Donaciones", es una plataforma peer-to-peer que conecta directamente a personas con necesidades médicas con potenciales donantes, sin intermediarios.
+La plataforma permite a los solicitantes crear perfiles detallados sobre sus necesidades médicas, subir evidencias para verificar la autenticidad de sus casos, y especificar exactamente qué insumos, medicamentos o equipos requieren. Los donantes pueden explorar estos casos, contactar directamente con los solicitantes y realizar donaciones que son verificadas mediante comprobantes, actualizando así las barras de progreso de cada caso.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+A diferencia de otras plataformas, ImpulsaLATAM: Donaciones no recibe ni administra dinero o donaciones directamente - funciona exclusivamente como un puente transparente entre solicitantes y donantes.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Características Principales
 
-## Learning Laravel
+- Creación de perfiles detallados para solicitantes de insumos médicos
+- Subida de evidencias médicas para verificar la autenticidad de casos
+- Sistema geolocalizado que muestra casos por país dentro de América Latina
+- Barras de progreso que indican el avance de cada solicitud
+- Verificación de donaciones mediante comprobantes
+- Comunicación directa entre donantes y solicitantes
+- Agregación de necesidades similares para mostrar demanda total
+- Cierre automático de casos cuando se completan las donaciones requeridas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Misión y Visión
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+ImpulsaLATAM surge al observar las urgentes necesidades diarias de personas que enfrentan barreras para acceder a la atención médica adecuada. Los hospitales a lo largo de América Latina afrontan una severa escasez de recursos médicos que impacta a millones de personas en toda la región.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+La visión es convertir a ImpulsaLATAM en una iniciativa que unifique esfuerzos para resolver nuestros propios desafíos a través de la colaboración entre personas con y sin formación técnica, el sector privado y organizaciones, trabajando juntos para apoyar a quienes más lo necesitan.
 
-## Laravel Sponsors
+La misión es crear un ecosistema de apoyo médico transparente, donde las donaciones lleguen DIRECTAMENTE a sus destinatarios, eliminando intermediarios y costos administrativos. Esta plataforma está diseñada para garantizar credibilidad y transparencia en cada fase del proceso.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+## Requisitos previos
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Para utilizar esta aplicación, necesitarás:
 
-## Contributing
+- PHP 8.4.x
+- Composer 2.0
+- Node.js 18.0
+- NPM 10.5.x o superior
+- MySQL 8.0 o MariaDB 10.5 o superior
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Instrucciones de instalación
 
-## Code of Conduct
+### Paso 1: Clonar el repositorio
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/impulsalatam/donaciones.impulsalatam.org.git
+cd donaciones.impulsalatam.org
+```
 
-## Security Vulnerabilities
+### Paso 2: Instalar dependencias
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+npm install
+```
 
-## License
+### Paso 3: Configurar el entorno
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Edita el archivo `.env` con la configuración de tu base de datos y otras variables de entorno necesarias.
+
+### Paso 4: Configurar la base de datos
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+### Paso 5: Compilar los assets
+
+```bash
+npm run dev
+```
+
+### Paso 6: Iniciar el servidor
+
+```bash
+php artisan serve
+```
+
+La aplicación estará disponible en `http://localhost:8000`.
+
+Se recomienda utilizar Laravel Herd para tener acceso al dominio en local:
+`donaciones.impulsalatam.org.test`
+
+## Stack Tecnológico
+
+### Backend
+- **Laravel 12**: Framework PHP robusto y elegante
+- **MySQL/MariaDB**: Sistema de gestión de bases de datos
+- **PHP 8.4+**: Lenguaje de programación del lado del servidor
+
+### Frontend
+- **Tailwind CSS 4**: Framework CSS utility-first
+- **Vite**: Herramienta de construcción frontend moderna
+
+## Contribución
+
+Agradecemos tu interés en contribuir a ImpulsaLATAM: Donaciones. Para participar en el desarrollo:
+
+1. Haz un fork del repositorio
+2. Crea una nueva rama para tu funcionalidad (`git checkout -b feature/nueva-funcionalidad`)
+3. Realiza tus cambios y haz commit (`git commit -m 'Añade nueva funcionalidad'`)
+4. Sube tus cambios a tu fork (`git push origin feature/nueva-funcionalidad`)
+5. Crea un Pull Request
+
+### Guías de contribución
+
+- Sigue las convenciones de codificación del proyecto
+- Asegúrate de que tus cambios pasen todas las pruebas
+- Documenta adecuadamente cualquier nueva funcionalidad
+- Mantén un enfoque en la accesibilidad y la experiencia de usuario
+
+Para reportar errores o solicitar nuevas funcionalidades, por favor utiliza la sección de Issues en GitHub.
+
+## Licencia
+
+Este proyecto está licenciado bajo [MIT License](LICENSE).
+
+---
+
+© 2025 ImpulsaLATAM.
