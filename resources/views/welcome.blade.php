@@ -44,7 +44,7 @@
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Inicio</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Explorar Casos</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Crear Solicitud</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Acerca de</a>
+                    <a href="{{ route('about') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Acerca de</a>
 
                     @if (Route::has('login'))
                         @auth
@@ -426,7 +426,7 @@
                             <li><a href="#" class="hover:text-blue-400 transition">Inicio</a></li>
                             <li><a href="#" class="hover:text-blue-400 transition">Explorar Casos</a></li>
                             <li><a href="#" class="hover:text-blue-400 transition">Crear Solicitud</a></li>
-                            <li><a href="#" class="hover:text-blue-400 transition">Acerca de</a></li>
+                            <li><a href="{{ route('about') }}" class="hover:text-blue-400 transition">Acerca de</a></li>
                             <li><a href="#" class="hover:text-blue-400 transition">Preguntas Frecuentes</a></li>
                         </ul>
                     </div>
