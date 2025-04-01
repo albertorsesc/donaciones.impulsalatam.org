@@ -158,7 +158,6 @@
             </div>
         </section>
 
-        <!-- Team section will be added next -->
-
+        @include('landing.footer')
     </body>
 </html>
