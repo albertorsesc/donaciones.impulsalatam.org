@@ -129,7 +129,8 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- First row: 3 cards -->
                     <!-- Step 1 -->
                     <div class="bg-blue-50 rounded-xl p-6 relative shadow-md hover:shadow-lg transition duration-300">
                         <div class="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">1</div>
@@ -171,7 +172,10 @@
                             Los donantes se contactan directamente contigo para coordinar la donación de insumos o servicios.
                         </p>
                     </div>
+                </div>
 
+                <!-- Second row: 2 cards centered -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                     <!-- Step 4 -->
                     <div class="bg-indigo-50 rounded-xl p-6 relative shadow-md hover:shadow-lg transition duration-300">
                         <div class="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">4</div>
