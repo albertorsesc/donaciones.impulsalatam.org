@@ -4,7 +4,7 @@
         <div class="flex items-center w-full md:w-auto justify-between">
             <div class="flex items-center gap-2 max-w-[calc(100%-50px)]">
                 <a href="{{ url('/') }}" class="flex items-center">
-                    <span class="text-blue-600 text-2xl sm:text-3xl font-bold">Impulsa<span class="text-teal-500">LATAM</span></span>
+                    <span class="text-rose-500 text-2xl sm:text-3xl font-bold">Impulsa<span class="text-rose-400">LATAM</span></span>
                 </a>
                 <div class="text-xs text-gray-500 border-l pl-2 ml-2 border-gray-300 break-normal">
                     <span class="block">donaciones.impulsalatam.org</span>
@@ -19,7 +19,7 @@
             </div>
 
             <!-- Mobile menu button -->
-            <button type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" id="mobile-menu-button" aria-expanded="false">
+            <button type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-300" id="mobile-menu-button" aria-expanded="false">
                 <span class="sr-only">Abrir menú principal</span>
                 <!-- Icon when menu is closed -->
                 <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" id="menu-icon-closed">
@@ -34,24 +34,24 @@
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center justify-end space-x-2 xl:space-x-4 flex-wrap">
-            <a href="{{ url('/') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition {{ request()->is('/') ? 'bg-gray-100 text-blue-600' : '' }}">Inicio</a>
+            <a href="{{ url('/') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition {{ request()->is('/') ? 'bg-gray-100 text-rose-400' : '' }}">Inicio</a>
             <a href="#" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Explorar Casos</a>
             <a href="#" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Crear Solicitud</a>
-            <a href="{{ route('about') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition {{ request()->is('acerca-de') ? 'bg-gray-100 text-blue-600' : '' }}">Acerca de</a>
+            <a href="{{ route('about') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition {{ request()->is('acerca-de') ? 'bg-gray-100 text-rose-400' : '' }}">Acerca de</a>
 
             <div class="flex flex-wrap items-center gap-2">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="inline-flex items-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                    <a href="{{ url('/dashboard') }}" class="inline-flex items-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition">
                         Dashboard
                     </a>
                 @else
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-3 xl:px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                    <a href="{{ route('login') }}" class="inline-flex items-center px-3 xl:px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition">
                         Ingresar
                     </a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="inline-flex items-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                        <a href="{{ route('register') }}" class="inline-flex items-center px-3 xl:px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition">
                             Registrarse
                         </a>
                     @endif
@@ -71,9 +71,9 @@
             <div class="pt-5 pb-4 px-4">
                 <div class="flex items-center justify-between">
                     <div>
-                        <span class="text-blue-600 text-2xl font-bold">Impulsa<span class="text-teal-500">LATAM</span></span>
+                        <span class="text-rose-500 text-2xl font-bold">Impulsa<span class="text-rose-400">LATAM</span></span>
                     </div>
-                    <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" id="close-slideover-button">
+                    <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-300" id="close-slideover-button">
                         <span class="sr-only">Cerrar menú</span>
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -82,26 +82,26 @@
                 </div>
                 <div class="mt-6">
                     <nav class="flex flex-col space-y-1">
-                        <a href="{{ url('/') }}" class="px-3 py-3 rounded-md text-base font-medium hover:bg-gray-100 transition {{ request()->is('/') ? 'bg-gray-100 text-blue-600' : 'text-gray-900' }}">Inicio</a>
+                        <a href="{{ url('/') }}" class="px-3 py-3 rounded-md text-base font-medium hover:bg-gray-100 transition {{ request()->is('/') ? 'bg-gray-100 text-rose-400' : 'text-gray-900' }}">Inicio</a>
                         <a href="#" class="px-3 py-3 rounded-md text-base font-medium hover:bg-gray-100 transition text-gray-900">Explorar Casos</a>
                         <a href="#" class="px-3 py-3 rounded-md text-base font-medium hover:bg-gray-100 transition text-gray-900">Crear Solicitud</a>
-                        <a href="{{ route('about') }}" class="px-3 py-3 rounded-md text-base font-medium hover:bg-gray-100 transition {{ request()->is('acerca-de') ? 'bg-gray-100 text-blue-600' : 'text-gray-900' }}">Acerca de</a>
+                        <a href="{{ route('about') }}" class="px-3 py-3 rounded-md text-base font-medium hover:bg-gray-100 transition {{ request()->is('acerca-de') ? 'bg-gray-100 text-rose-400' : 'text-gray-900' }}">Acerca de</a>
                     </nav>
                 </div>
                 <div class="mt-8 pt-4 border-t border-gray-200">
                     <div class="flex flex-col space-y-3">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                                <a href="{{ url('/dashboard') }}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition">
                                     Dashboard
                                 </a>
                             @else
-                                <a href="{{ route('login') }}" class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                                <a href="{{ route('login') }}" class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition">
                                     Ingresar
                                 </a>
 
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                                    <a href="{{ route('register') }}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition">
                                         Registrarse
                                     </a>
                                 @endif
