@@ -5,12 +5,12 @@
 <section class="relative bg-gradient-to-b from-blue-50 to-white py-16 md:py-24">
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
+            <div class="md:w-2/3">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                     Conectando necesidades médicas con donantes solidarios
                 </h1>
                 <p class="text-xl text-gray-600 mb-8">
-                    Impulsa LATAM facilita la donación directa de insumos, equipamiento y servicios médicos, conectando a personas con necesidades específicas con donantes en toda Latinoamérica.
+                    ImpulsaLATAM facilita la donación directa de insumos, equipamiento y servicios médicos, conectando a personas con necesidades específicas con donantes en toda Latinoamérica.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
@@ -24,11 +24,11 @@
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2">
+            <div class="md:w-1/3">
                 <div class="relative">
                     <div class="absolute inset-0 bg-blue-100 rounded-lg transform rotate-3"></div>
                     <div class="absolute inset-0 bg-teal-100 rounded-lg transform -rotate-3 opacity-70"></div>
-                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d99b76?q=80&w=2070" alt="Medical Support" class="relative rounded-lg shadow-lg w-full">
+                    <img src="{{ asset('img/logo.png') }}" alt="ImpulsaLATAM.org" class="relative rounded-lg shadow-lg w-full object-contain">
                 </div>
             </div>
         </div>

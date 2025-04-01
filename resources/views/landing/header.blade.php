@@ -6,14 +6,14 @@
                 <a href="{{ url('/') }}" class="flex items-center">
                     <span class="text-blue-600 text-2xl sm:text-3xl font-bold">Impulsa<span class="text-teal-500">LATAM</span></span>
                 </a>
-                <div class="text-xs text-gray-500 border-l pl-2 ml-2 border-gray-300 truncate">
-                    <span class="block truncate">donaciones.impulsalatam.org</span>
+                <div class="text-xs text-gray-500 border-l pl-2 ml-2 border-gray-300 break-normal">
+                    <span class="block">donaciones.impulsalatam.org</span>
                     <div class="flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span class="truncate">Ciudad de México, México</span>
+                        <span>Ciudad de México, México</span>
                     </div>
                 </div>
             </div>
