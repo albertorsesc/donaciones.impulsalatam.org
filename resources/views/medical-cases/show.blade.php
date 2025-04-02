@@ -28,17 +28,8 @@
                             {{ ucfirst(str_replace('_', ' ', $medicalCase->status->value)) }}
                         </span>
 
-                        @php
-                            $urgencyColors = [
-                                'low' => 'bg-blue-100 text-blue-800',
-                                'medium' => 'bg-yellow-100 text-yellow-800',
-                                'high' => 'bg-orange-100 text-orange-800',
-                                'urgent' => 'bg-red-100 text-red-800',
-                            ];
-                            $urgencyColor = $urgencyColors[$medicalCase->urgency_level->value] ?? 'bg-gray-100 text-gray-800';
-                        @endphp
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $urgencyColor }} mt-2">
-                            Urgencia: {{ ucfirst($medicalCase->urgency_level->value) }}
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $medicalCase->urgency_level->color() }} mt-2">
+                            Urgencia: {{ $medicalCase->urgency_level->toDisplayName() }}
                         </span>
                     </div>
                 </div>

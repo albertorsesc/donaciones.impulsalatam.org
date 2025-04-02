@@ -18,6 +18,11 @@ class MedicalCasePolicy
         return null;
     }
     
+    public function index(User $user) : bool
+    {
+        return $user->role === RoleTypesEnum::Requester;
+    }
+    
     /**
      * Determine whether the user can view any models.
      */

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MedicalCases\MedicalCaseController;
 use App\Http\Controllers\MedicalCases\MedicalDocumentController;
+use App\Http\Controllers\MedicalCases\RequesterMedicalCaseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -37,6 +38,11 @@ Route::middleware([
         '/casos-medicos/{medicalCase}',
         [MedicalCaseController::class, 'show']
     )->name('medical-cases.show');
+
+    Route::get(
+        '/mis-casos-medicos',
+        [RequesterMedicalCaseController::class, 'index']
+    )->name('requester.medical-cases.index');
 
     // Medical Documents
     Route::post(

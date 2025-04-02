@@ -7,6 +7,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import {UserRoles} from "@/enums/user-roles.enum.js";
 
 defineProps({
     title: String,
@@ -50,6 +51,14 @@ const logout = () => {
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+
+                                <NavLink
+                                    v-if="$page.props.auth.user.role === UserRoles.REQUESTER || $page.props.auth.user.isRoot"
+                                    :href="route('requester.medical-cases.index')"
+                                    :active="route().current('requester.medical-cases.index')"
+                                >
+                                    Mis Casos
                                 </NavLink>
                             </div>
                         </div>

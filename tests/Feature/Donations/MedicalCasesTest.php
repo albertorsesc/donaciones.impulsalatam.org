@@ -54,6 +54,22 @@ class MedicalCasesTest extends TestCase
             $page->component('MedicalCases/Create')
         );
     }
+    
+    public function test_requester_users_can_visit_their_own_medical_cases()
+    {
+        $this->signInAs(RoleTypesEnum::Donor);
+        
+        $response = $this->get(route('requester.medical-cases.index'));
+        $response->assertForbidden();
+        
+        $this->signInAs(RoleTypesEnum::Requester);
+        
+        $response = $this->get(route('requester.medical-cases.index'));
+        $response->assertOk();
+        $response->assertInertia(fn (AssertableInertia $page) =>
+            $page->component('MedicalCases/Requester/Index')
+        );
+    }
 
     public function test_requester_user_can_create_a_medical_case()
     {
