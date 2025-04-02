@@ -2,12 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\MedicalCasePatientRelationEnum;
-use App\Models\MedicalCaseStatusEnum;
-use App\Models\UrgencyLevelEnum;
+use App\Enums\MedicalCase\MedicalCasePatientRelationEnum;
+use App\Enums\MedicalCase\MedicalCaseStatusEnum;
+use App\Enums\MedicalCase\UrgencyLevelEnum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MedicalCase>

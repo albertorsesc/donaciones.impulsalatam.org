@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\MedicalCaseStatusEnum;
+use App\Enums\MedicalCase\MedicalCaseStatusEnum;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

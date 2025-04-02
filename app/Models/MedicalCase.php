@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\MedicalCase\MedicalCasePatientRelationEnum;
+use App\Enums\MedicalCase\MedicalCaseStatusEnum;
+use App\Enums\MedicalCase\UrgencyLevelEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MedicalCase extends Model
 {
@@ -38,5 +42,13 @@ class MedicalCase extends Model
         static::creating(function (MedicalCase $medicalCase) {
             $medicalCase->requester_id = auth()->id();
         });
+    }
+
+    /**
+     * Get the documents associated with this medical case
+     */
+    public function documents(): HasMany
+    {
+        return $this->hasMany(MedicalDocument::class);
     }
 }

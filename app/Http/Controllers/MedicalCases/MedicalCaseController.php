@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MedicalCases;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\MedicalCaseRequest;
 use App\Models\MedicalCase;
 use Illuminate\Http\Response as IlluminateResponse;

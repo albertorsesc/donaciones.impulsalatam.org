@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\MedicalCasePatientRelationEnum;
-use App\Models\UrgencyLevelEnum;
+use App\Enums\MedicalCase\MedicalCasePatientRelationEnum;
+use App\Enums\MedicalCase\UrgencyLevelEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MedicalCaseRequest extends FormRequest
