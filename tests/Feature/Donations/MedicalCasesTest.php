@@ -7,6 +7,7 @@ use App\Models\MedicalCase;
 use App\Models\MedicalCaseStatusEnum;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
+use Inertia\Testing\AssertableInertia;
 use Tests\TestCase;
 use Throwable;
 
@@ -23,6 +24,22 @@ class MedicalCasesTest extends TestCase
             $this->make(MedicalCase::class)->toArray()
         );
         $response->assertStatus(403); // Forbidden
+    }
+    
+    public function test_only_requester_users_can_visit_create_medical_case_view()
+    {
+        $this->signInAs(RoleTypesEnum::Donor);
+
+        $response = $this->get(route('medical-cases.create'));
+        $response->assertForbidden();
+        
+        $this->signInAs(RoleTypesEnum::Requester);
+        
+        $response = $this->get(route('medical-cases.create'));
+        $response->assertOk();
+        $response->assertInertia(fn (AssertableInertia $page) =>
+            $page->component('MedicalCases/Create')
+        );
     }
 
     public function test_requester_user_can_create_a_medical_case()

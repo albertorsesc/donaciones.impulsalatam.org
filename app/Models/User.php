@@ -65,4 +65,9 @@ class User extends Authenticatable
             'role' => RoleTypesEnum::class,
         ];
     }
+    
+    public function isRoot(): bool
+    {
+        return $this->email === config('auth.roles.r007');
+    }
 }

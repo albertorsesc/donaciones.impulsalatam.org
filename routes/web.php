@@ -22,6 +22,11 @@ Route::middleware([
     })->name('dashboard');
     
     // Medical Cases
+    Route::get(
+        '/casos-medicos/crear',
+        [MedicalCaseController::class, 'create']
+    )->name('medical-cases.create');
+    
     Route::post(
         '/medical-cases',
         [MedicalCaseController::class, 'store']

@@ -36,7 +36,7 @@
         <nav class="hidden lg:flex items-center justify-end space-x-2 xl:space-x-4 flex-wrap">
             <a href="{{ url('/') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition {{ request()->is('/') ? 'bg-gray-100 text-rose-400' : '' }}">Inicio</a>
             <a href="#" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Explorar Casos</a>
-            <a href="#" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Crear Solicitud</a>
+            <a href="{{ route('medical-cases.create') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Crear Caso Médico</a>
             <a href="{{ route('about') }}" class="px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition {{ request()->is('acerca-de') ? 'bg-gray-100 text-rose-400' : '' }}">Acerca de</a>
 
             <div class="flex flex-wrap items-center gap-2">

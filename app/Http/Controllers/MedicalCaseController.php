@@ -11,6 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MedicalCaseController extends Controller
 {
+    public function create() : InertiaResponse
+    {
+        if (request()->user()->cannot('create', MedicalCase::class)) {
+            abort(403);
+        }
+
+        return Inertia::render('MedicalCases/Create');
+    }
+    
     public function store(MedicalCaseRequest $request) : IlluminateResponse
     {
         if ($request->user()->cannot('store', MedicalCase::class)) {
