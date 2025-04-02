@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('medical_documents', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(MedicalCase::class)->constrained()->cascadeOnDelete();
-            $table->string('document_type');
             $table->string('file_path');
             $table->string('file_name');
             $table->integer('file_size');

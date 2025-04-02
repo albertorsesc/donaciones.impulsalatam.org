@@ -34,7 +34,7 @@ Route::middleware([
     )->name('medical-cases.store');
 
     Route::get(
-        '/explorar-casos/{medicalCase}',
+        '/casos-medicos/{medicalCase}',
         [MedicalCaseController::class, 'show']
     )->name('medical-cases.show');
 

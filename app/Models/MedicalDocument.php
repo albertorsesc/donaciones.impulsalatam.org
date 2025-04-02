@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-use App\Enums\MedicalCase\MedicalDocumentTypeEnum;
 use App\Enums\MedicalCase\MedicalDocumentVerificationStatusEnum;
+use Database\Factories\MedicalDocumentFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MedicalDocument extends Model
 {
-    /** @use HasFactory<\Database\Factories\MedicalDocumentFactory> */
+    /** @use HasFactory<MedicalDocumentFactory> */
     use HasFactory;
 
     protected $fillable = [
         'medical_case_id',
-        'document_type',
         'file_path',
         'file_name',
         'file_size',
@@ -28,7 +27,6 @@ class MedicalDocument extends Model
     protected $casts = [
         'is_public' => 'boolean',
         'file_size' => 'integer',
-        'document_type' => MedicalDocumentTypeEnum::class,
         'verification_status' => MedicalDocumentVerificationStatusEnum::class,
     ];
 

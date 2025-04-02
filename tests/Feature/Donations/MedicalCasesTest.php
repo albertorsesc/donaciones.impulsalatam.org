@@ -3,7 +3,6 @@
 namespace Tests\Feature\Donations;
 
 use App\Enums\MedicalCase\MedicalCaseStatusEnum;
-use App\Enums\MedicalCase\MedicalDocumentTypeEnum;
 use App\Enums\MedicalCase\MedicalDocumentVerificationStatusEnum;
 use App\Enums\RoleTypesEnum;
 use App\Models\MedicalCase;
@@ -24,9 +23,18 @@ class MedicalCasesTest extends TestCase
     {
         $this->signInAs(RoleTypesEnum::Donor);
 
+        $medicalCase = $this->make(MedicalCase::class);
+        $data = Arr::except($medicalCase->toArray(), ['requester_id']);
+
+        // Add document for validation
+        Storage::fake('public');
+        $file = UploadedFile::fake()->create('document.pdf', 500);
+        $data['documents'] = [$file];
+        $data['document_is_public'] = [true];
+
         $response = $this->post(
             route('medical-cases.store'),
-            $this->make(MedicalCase::class)->toArray()
+            $data
         );
         $response->assertStatus(403); // Forbidden
     }
@@ -55,7 +63,7 @@ class MedicalCasesTest extends TestCase
         $data = Arr::except($medicalCase->toArray(), ['requester_id']);
 
         $response = $this->post(route('medical-cases.store'), $data);
-        $response->assertCreated();
+        $response->assertRedirectToRoute('medical-cases.show', MedicalCase::first());
 
         $createdCase = MedicalCase::first();
 
@@ -74,59 +82,6 @@ class MedicalCasesTest extends TestCase
         ]);
     }
 
-    public function test_requester_user_can_create_a_medical_case_with_documents()
-    {
-        Storage::fake('public');
-        $this->signInAs(RoleTypesEnum::Requester);
-
-        $medicalCase = $this->make(MedicalCase::class);
-        $data = Arr::except($medicalCase->toArray(), ['requester_id']);
-
-        // NOTE: Document upload is now a separate operation from case creation
-        // First create the case
-        $response = $this->post(route('medical-cases.store'), $data);
-        $response->assertCreated();
-
-        $createdCase = MedicalCase::first();
-        $this->assertDatabaseHas('medical_cases', [
-            'id' => $createdCase->id,
-            'title' => $medicalCase->title,
-        ]);
-
-        // Then upload documents separately
-        $prescriptionFile = UploadedFile::fake()->create('prescription.pdf', 1000);
-        $this->post(route('medical-documents.store', $createdCase), [
-            'document' => $prescriptionFile,
-            'document_type' => MedicalDocumentTypeEnum::Prescription->value,
-            'is_public' => true,
-        ]);
-
-        $diagnosisFile = UploadedFile::fake()->create('diagnosis.jpg', 500);
-        $this->post(route('medical-documents.store', $createdCase), [
-            'document' => $diagnosisFile,
-            'document_type' => MedicalDocumentTypeEnum::Diagnosis->value,
-            'is_public' => false,
-        ]);
-
-        // Now check that both documents were added
-        $createdCase->refresh();
-        $this->assertCount(2, $createdCase->documents);
-
-        $this->assertDatabaseHas('medical_documents', [
-            'medical_case_id' => $createdCase->id,
-            'document_type' => MedicalDocumentTypeEnum::Prescription->value,
-            'is_public' => true,
-            'verification_status' => MedicalDocumentVerificationStatusEnum::Pending->value,
-        ]);
-
-        $this->assertDatabaseHas('medical_documents', [
-            'medical_case_id' => $createdCase->id,
-            'document_type' => MedicalDocumentTypeEnum::Diagnosis->value,
-            'is_public' => false,
-            'verification_status' => MedicalDocumentVerificationStatusEnum::Pending->value,
-        ]);
-    }
-
     public function test_can_visit_medical_case_profile()
     {
         $this->signInAs(RoleTypesEnum::Donor);
@@ -134,12 +89,10 @@ class MedicalCasesTest extends TestCase
         $medicalCase = $this->create(MedicalCase::class);
         $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::Prescription,
             'is_public' => true,
         ]);
         $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport,
             'is_public' => false,
         ]);
 
@@ -169,13 +122,11 @@ class MedicalCasesTest extends TestCase
 
         $publicDocument = $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::Prescription,
             'is_public' => true,
         ]);
 
         $privateDocument = $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport,
             'is_public' => false,
         ]);
 
@@ -211,7 +162,6 @@ class MedicalCasesTest extends TestCase
 
         $response = $this->post(route('medical-documents.store', $ownMedicalCase), [
             'document' => $file,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport->value,
             'is_public' => true,
         ]);
 
@@ -219,7 +169,6 @@ class MedicalCasesTest extends TestCase
 
         $this->assertDatabaseHas('medical_documents', [
             'medical_case_id' => $ownMedicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport->value,
             'is_public' => true,
             'verification_status' => MedicalDocumentVerificationStatusEnum::Pending->value,
         ]);
@@ -253,7 +202,6 @@ class MedicalCasesTest extends TestCase
 
         $response = $this->post(route('medical-documents.store', $medicalCase), [
             'document' => $file,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport->value,
             'is_public' => true,
         ]);
 
@@ -284,7 +232,6 @@ class MedicalCasesTest extends TestCase
 
         $response = $this->post(route('medical-documents.store', $medicalCase), [
             'document' => $file,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport->value,
             'is_public' => true,
         ]);
 
@@ -297,7 +244,6 @@ class MedicalCasesTest extends TestCase
     {
         Storage::fake('public');
 
-        // Create a requester
         $requester = $this->create(User::class, ['role' => RoleTypesEnum::Requester]);
         $this->actingAs($requester);
 
@@ -310,30 +256,22 @@ class MedicalCasesTest extends TestCase
         // Add required documents
         $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::Prescription,
             'is_public' => true,
         ]);
 
         $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::MedicalReport,
             'is_public' => true,
         ]);
 
         $this->create(MedicalDocument::class, [
             'medical_case_id' => $medicalCase->id,
-            'document_type' => MedicalDocumentTypeEnum::CostEstimate,
             'is_public' => true,
         ]);
 
-        // Check existing routes in the application
         $searchResponse = $this->get(route('medical-cases.show', $medicalCase));
         $searchResponse->assertOk();
 
-        // For this test case, we'll focus on validating that the necessary documents exist
         $this->assertCount(3, $medicalCase->documents);
-        $this->assertTrue($medicalCase->documents()->where('document_type', MedicalDocumentTypeEnum::Prescription)->exists());
-        $this->assertTrue($medicalCase->documents()->where('document_type', MedicalDocumentTypeEnum::MedicalReport)->exists());
-        $this->assertTrue($medicalCase->documents()->where('document_type', MedicalDocumentTypeEnum::CostEstimate)->exists());
     }
 }

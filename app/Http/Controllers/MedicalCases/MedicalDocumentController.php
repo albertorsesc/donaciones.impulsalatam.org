@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\MedicalCases;
 
-use App\Enums\MedicalCase\MedicalDocumentTypeEnum;
 use App\Enums\MedicalCase\MedicalDocumentVerificationStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\MedicalCase;
@@ -27,9 +26,6 @@ class MedicalDocumentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'document' => 'required|file|max:20480|mimes:pdf,jpg,jpeg,png',
-            'document_type' => 'required|string|in:' . implode(',', array_column(
-                MedicalDocumentTypeEnum::cases(), 'value')
-            ),
             'is_public' => 'boolean',
         ]);
 

@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\MedicalCase\MedicalDocumentTypeEnum;
 use App\Enums\MedicalCase\MedicalDocumentVerificationStatusEnum;
 use App\Models\MedicalCase;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,7 +23,6 @@ class MedicalDocumentFactory extends Factory
 
         return [
             'medical_case_id' => MedicalCase::factory(),
-            'document_type' => $this->faker->randomElement(MedicalDocumentTypeEnum::cases()),
             'file_path' => 'documents/' . $fileName,
             'file_name' => $fileName,
             'file_size' => $this->faker->numberBetween(1000, 20000000),

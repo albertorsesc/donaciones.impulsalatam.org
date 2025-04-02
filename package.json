@@ -21,6 +21,7 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
-        "@heroicons/vue": "^2.2.0"
+        "@heroicons/vue": "^2.2.0",
+        "@jaxtheprime/vue3-dropzone": "^3.3.0"
     }
 }
