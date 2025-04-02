@@ -1,4 +1,4 @@
-@extends('landing.layout.master')
+@extends('layout.master')
 
 @section('content')
 <!-- Hero Section -->

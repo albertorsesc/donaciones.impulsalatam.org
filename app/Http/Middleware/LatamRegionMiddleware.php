@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\GeolocationService;
 use Closure;
 use Illuminate\Http\Request;
-use App\Services\GeolocationService;
 
 class LatamRegionMiddleware
 {
@@ -16,7 +16,6 @@ class LatamRegionMiddleware
     /**
      * Create a new middleware instance.
      *
-     * @param GeolocationService $geolocation
      * @return void
      */
     public function __construct(GeolocationService $geolocation)
@@ -27,8 +26,6 @@ class LatamRegionMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -44,7 +41,7 @@ class LatamRegionMiddleware
         }
 
         // Check if the visitor is from LATAM
-        if (!$this->geolocation->isFromLatam()) {
+        if (! $this->geolocation->isFromLatam()) {
             // Return a 404 response for non-LATAM visitors
             abort(404);
         }
@@ -55,7 +52,6 @@ class LatamRegionMiddleware
     /**
      * Determine if the request should bypass LATAM restriction
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
     protected function shouldBypass(Request $request)

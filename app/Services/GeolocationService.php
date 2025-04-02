@@ -63,7 +63,7 @@ class GeolocationService
     /**
      * Get location data for an IP address
      *
-     * @param string|null $ip
+     * @param  string|null  $ip
      * @return array|null
      */
     public function getLocation($ip = null)
@@ -77,12 +77,12 @@ class GeolocationService
                 'countryCode' => 'MX',
                 'regionName' => 'Baja California',
                 'city' => 'Mexicali',
-                'isLatam' => true
+                'isLatam' => true,
             ];
         }
 
         // Try to get from cache first
-        $cacheKey = 'geolocation_' . str_replace('.', '_', $ip);
+        $cacheKey = 'geolocation_'.str_replace('.', '_', $ip);
 
         return Cache::remember($cacheKey, $this->cacheTtl, function () use ($ip) {
             try {
@@ -92,24 +92,25 @@ class GeolocationService
                     : "http://ip-api.com/json/{$ip}";
 
                 $response = Http::get($apiUrl, [
-                    'fields' => 'status,message,country,countryCode,region,regionName,city,district,lat,lon'
+                    'fields' => 'status,message,country,countryCode,region,regionName,city,district,lat,lon',
                 ]);
 
                 if ($response->successful() && $response['status'] === 'success') {
                     $data = $response->json();
                     $data['isLatam'] = $this->isLatamCountry($data['countryCode']);
+
                     return $data;
                 }
 
                 Log::warning("IP-API geolocation failed for IP: {$ip}", [
-                    'response' => $response->json()
+                    'response' => $response->json(),
                 ]);
 
                 return null;
             } catch (\Exception $e) {
-                Log::error("Geolocation service error: " . $e->getMessage(), [
+                Log::error('Geolocation service error: '.$e->getMessage(), [
                     'ip' => $ip,
-                    'exception' => $e
+                    'exception' => $e,
                 ]);
 
                 return null;
@@ -120,23 +121,23 @@ class GeolocationService
     /**
      * Format the location as a readable string
      *
-     * @param string|null $ip
+     * @param  string|null  $ip
      * @return string
      */
     public function getFormattedLocation($ip = null)
     {
         $location = $this->getLocation($ip);
 
-        if (!$location) {
+        if (! $location) {
             return '';
         }
 
-        if (!empty($location['city']) && !empty($location['country'])) {
-            return $location['city'] . ', ' . $location['country'];
+        if (! empty($location['city']) && ! empty($location['country'])) {
+            return $location['city'].', '.$location['country'];
         }
 
-        if (!empty($location['regionName']) && !empty($location['country'])) {
-            return $location['regionName'] . ', ' . $location['country'];
+        if (! empty($location['regionName']) && ! empty($location['country'])) {
+            return $location['regionName'].', '.$location['country'];
         }
 
         return $location['country'] ?? '';
@@ -145,7 +146,7 @@ class GeolocationService
     /**
      * Check if the country code is in LATAM
      *
-     * @param string $countryCode
+     * @param  string  $countryCode
      * @return bool
      */
     public function isLatamCountry($countryCode)
@@ -162,7 +163,7 @@ class GeolocationService
     {
         $location = $this->getLocation();
 
-        if (!$location) {
+        if (! $location) {
             // Default to false if we can't determine location
             return false;
         }

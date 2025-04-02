@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Jetstream;
 
+use App\Enums\RoleTypesEnum;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
@@ -41,6 +42,7 @@ class RegistrationTest extends TestCase
 
         $response = $this->post('/register', [
             'name' => 'Test User',
+            'role' => fake()->randomElement(RoleTypesEnum::cases())->value,
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',

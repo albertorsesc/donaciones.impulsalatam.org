@@ -13,6 +13,7 @@ class DeleteAccountTest extends TestCase
 
     public function test_user_accounts_can_be_deleted(): void
     {
+        $this->withoutExceptionHandling();
         if (! Features::hasAccountDeletionFeatures()) {
             $this->markTestSkipped('Account deletion is not enabled.');
         }

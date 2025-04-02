@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\MedicalCaseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,4 +20,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    
+    // Medical Cases
+    Route::post(
+        '/medical-cases',
+        [MedicalCaseController::class, 'store']
+    )->name('medical-cases.store');
+    
+    Route::get(
+        '/explorar-casos/{medicalCase}',
+        [MedicalCaseController::class, 'show']
+    )->name('medical-cases.show');
 });
